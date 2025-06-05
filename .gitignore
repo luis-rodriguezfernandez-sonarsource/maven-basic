@@ -21,3 +21,7 @@ buildNumber.properties
 .idea
 .idea/
 .idea/*
+
+# vi vim
+*.swp
+*.swo
