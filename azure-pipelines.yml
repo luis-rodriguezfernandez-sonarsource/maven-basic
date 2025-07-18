@@ -4,6 +4,7 @@
 trigger:
   - master
   - develop
+  - 62058_test_snowflake
 
 pool:
   vmImage: ubuntu-latest
