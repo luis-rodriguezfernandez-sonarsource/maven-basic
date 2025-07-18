@@ -21,13 +21,13 @@ steps:
   inputs:
     mavenPomFile: 'pom.xml'
     mavenOptions: '-Xmx3072m'
-    options: '-X'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.17'
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'clean verify sonar:sonar'
+    options: '-X -Dsonar.projectKey=luis-rodriguezfernandez-sonarsource_maven-basic'
 
 - task: SonarCloudPublish@3
   displayName: 'Code Analysis - Publish QG'
