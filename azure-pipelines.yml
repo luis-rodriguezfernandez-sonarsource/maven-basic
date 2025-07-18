@@ -9,11 +9,13 @@ pool:
 
 steps:
 
-- task: SonarQubePrepare@7
+- task: SonarCloudPrepare@3
   inputs:
-    SonarQube: 'lurodrig.sonarcloud.io'
+    SonarCloud: 'lurodrig.sonarcloud.io'
+    organization: 'luis-rodriguezfernandez-sonarsource'
+    projectName: 'maven-basic'
+    projectKey: 'luis-rodriguezfernandez-sonarsource_maven-basic'
     scannerMode: 'other'
-    cliProjectKey: 'luis-rodriguezfernandez-sonarsource_maven-basic'
 
 - task: Maven@4
   inputs:
@@ -27,6 +29,7 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'clean verify sonar:sonar'
 
-- task: SonarQubePublish@7
+- task: SonarCloudPublish@3
+  displayName: 'Code Analysis - Publish QG'
   inputs:
     pollingTimeoutSec: '300'
