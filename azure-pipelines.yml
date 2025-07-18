@@ -3,6 +3,7 @@
 
 trigger:
   - master
+  - 1234_random_branch
 
 pool:
   vmImage: ubuntu-latest
