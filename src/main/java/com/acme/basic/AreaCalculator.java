@@ -9,6 +9,7 @@ public class AreaCalculator {
         if (radius < 0) {
             throw new IllegalArgumentException("Radius cannot be negative");
         }
+        System.out.println("Circle!");
         return Math.PI * radius * radius;
     }
 
