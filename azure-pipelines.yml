@@ -11,9 +11,10 @@ steps:
 
 - task: SonarQubePrepare@7
   inputs:
-    SonarQube: 'SUPPORT-53337'
+    SonarQube: 'lurodrig.sonarcloud.io'
     scannerMode: 'other'
-      
+    cliProjectKey: 'luis-rodriguezfernandez-sonarsource_maven-basic'
+
 - task: Maven@4
   inputs:
     mavenPomFile: 'pom.xml'
