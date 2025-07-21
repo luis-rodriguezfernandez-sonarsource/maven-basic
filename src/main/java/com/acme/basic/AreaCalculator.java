@@ -2,6 +2,8 @@ package com.acme.basic;
 
 import org.springframework.stereotype.Service;
 
+import java.util.concurrent.atomic.AtomicLong;
+
 @Service
 public class AreaCalculator {
 
@@ -34,7 +36,6 @@ public class AreaCalculator {
     }
 
     /**
-     *
      * @param majorRadius
      * @param minorRadius
      * @return
@@ -44,5 +45,13 @@ public class AreaCalculator {
             throw new IllegalArgumentException("Major and minor radii must be positive");
         }
         return 4 * Math.PI * Math.PI * majorRadius * minorRadius;
+    }
+
+    Boolean isSameNumberValue(AtomicLong a, AtomicLong b) {
+        return a.equals(b); // Noncompliant, this is true only if a == b
+    }
+
+    Boolean isSameReference(AtomicLong a, AtomicLong b) {
+        return a.equals(b); // Noncompliant, because misleading
     }
 }
