@@ -54,4 +54,11 @@ public class AreaCalculator {
     Boolean isSameReference(AtomicLong a, AtomicLong b) {
         return a.equals(b); // Noncompliant, because misleading
     }
+
+    public double calculateHeptagonArea(double side) {
+        if (side < 0) {
+            throw new IllegalArgumentException("Side length cannot be negative");
+        }
+        return (7.0 / 4.0) * side * side * (1.0 / Math.tan(Math.PI / 7.0));
+    }
 }
