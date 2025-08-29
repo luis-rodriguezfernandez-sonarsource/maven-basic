@@ -6,7 +6,7 @@ public class Volumes {
         // TODO
     }
 
-    int clientId = 12345; // Example client ID
+    private int clientId = 12345; // Example client ID
 
     /*
     public static double rectangularPrism(double length, double width, double height) {
