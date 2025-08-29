@@ -17,6 +17,29 @@ public class Volumes {
     }
     */
 
+    void doSomethingElse() {
+        // TODO
+    }
+
+    private int customerId = 123456; // Example client ID
+
+    /*
+    public static double rectangularPrism(double length, double width, double height) {
+        if (length < 0 || width < 0 || height < 0) {
+            throw new IllegalArgumentException("Length, width, and height cannot be negative");
+        }
+        return length * width * height;
+    }
+    */
+
+    /*
+public static double rectangularPrism(double length, double width, double height) {
+    if (length < 0 || width < 0 || height < 0) {
+        throw new IllegalArgumentException("Length, width, and height cannot be negative");
+    }
+    return length * width * height;
+}
+*/
     public static double cube(double side) {
         if (side < 0) {
             throw new IllegalArgumentException("Side length cannot be negative");
