@@ -1,5 +1,6 @@
 package com.acme.basic;
 
+import jakarta.annotation.Nonnull;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.atomic.AtomicLong;
@@ -61,4 +62,23 @@ public class AreaCalculator {
         }
         return (7.0 / 4.0) * side * side * (1.0 / Math.tan(Math.PI / 7.0));
     }
+
+    @Nonnull
+    private String primary;
+    private String secondary;
+
+    public void foo(String color) {
+        if (color != null) {
+            secondary = null;
+        }
+        primary = color;  // Noncompliant; "primary" is Nonnull but could be set to null here
+    }
+
+    @Nonnull
+    public String indirectMix() {
+        String mix = null;
+        return mix;  // Noncompliant; return value is Nonnull, but null is returned.
+    }
+
+
 }
