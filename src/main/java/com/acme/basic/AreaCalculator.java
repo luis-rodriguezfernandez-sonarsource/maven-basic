@@ -2,7 +2,9 @@ package com.acme.basic;
 
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.locks.Lock;
 
 @Service
 public class AreaCalculator {
@@ -60,5 +62,11 @@ public class AreaCalculator {
             throw new IllegalArgumentException("Side length cannot be negative");
         }
         return (7.0 / 4.0) * side * side * (1.0 / Math.tan(Math.PI / 7.0));
+    }
+
+    public void doSomething(File file, Lock lock) {
+        file.delete();  // Noncompliant
+        // ...
+        lock.tryLock(); // Noncompliant
     }
 }
