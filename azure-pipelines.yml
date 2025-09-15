@@ -13,21 +13,34 @@ steps:
   inputs:
     SonarCloud: 'lurodrig.sonarcloud.io'
     organization: 'luis-rodriguezfernandez-sonarsource'
-    projectName: 'maven-basic'
-    projectKey: 'luis-rodriguezfernandez-sonarsource_maven-basic'
-    scannerMode: 'other'
+#    projectName: 'maven-basic'
+#    projectKey: 'luis-rodriguezfernandez-sonarsource_maven-basic'
+    scannerMode: 'cli'
+    cliProjectVersion: '4.0-SNAPSHOT'
+    cliProjectName: 'Example of basic Maven project'
+    cliProjectKey: 'luis-rodriguezfernandez-sonarsource_maven-basic'
+    cliSources: 'pom.xml,src/main/java'
+    extraProperties: |
+        sonar.verbose=true
+        sonar.java.binaries=target/classes
+        sonar.java.binaries=target/classes
+        sonar.java.test.binaries=target/test-classes
 
-- task: Maven@4
+# - task: Maven@4
+#  inputs:
+#    mavenPomFile: 'pom.xml'
+#    mavenOptions: '-Xmx3072m'
+#    javaHomeOption: 'JDKVersion'
+#    jdkVersionOption: '1.17'
+#    jdkArchitectureOption: 'x64'
+#    publishJUnitResults: true
+#    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+#    goals: 'clean verify sonar:sonar'
+#    options: '-X'
+
+- task: SonarCloudAnalyze@3
   inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.17'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'clean verify sonar:sonar'
-    options: '-X'
+    jdkversion: JAVA_HOME_17_X64
 
 - task: SonarCloudPublish@3
   displayName: 'Code Analysis - Publish QG'
