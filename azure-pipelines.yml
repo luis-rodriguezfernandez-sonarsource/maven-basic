@@ -23,20 +23,21 @@ steps:
     cliSources: 'pom.xml,src/main/java'
     extraProperties: |
         sonar.verbose=true
-        sonar.java.binaries=/home/vsts/work/1/s/target/classes
-        sonar.java.test.binaries=/home/vsts/work/1/s/target/test-classes
+        sonar.java.binaries=target/classes
+        sonar.java.test.binaries=target/test-classes
 
-# - task: Maven@4
-#  inputs:
-#    mavenPomFile: 'pom.xml'
-#    mavenOptions: '-Xmx3072m'
-#    javaHomeOption: 'JDKVersion'
-#    jdkVersionOption: '1.17'
-#    jdkArchitectureOption: 'x64'
-#    publishJUnitResults: true
-#    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-#    goals: 'clean verify sonar:sonar'
-#    options: '-X'
+
+
+- task: Maven@4
+  inputs:
+    mavenPomFile: 'pom.xml'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.17'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    goals: 'clean verify'
+    options: '-X'
 
 - task: SonarCloudAnalyze@3
   inputs:
