@@ -24,7 +24,6 @@ steps:
     extraProperties: |
         sonar.verbose=true
         sonar.java.binaries=target/classes
-        sonar.java.binaries=target/classes
         sonar.java.test.binaries=target/test-classes
 
 # - task: Maven@4
