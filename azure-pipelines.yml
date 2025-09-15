@@ -26,7 +26,9 @@ steps:
         sonar.java.binaries=target/classes
         sonar.java.test.binaries=target/test-classes
 
-
+- script: |
+     echo "PRINT ENVIRONMENT" 
+     env
 
 - task: Maven@4
   inputs:
