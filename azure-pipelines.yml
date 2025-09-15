@@ -27,7 +27,7 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'clean verify sonar:sonar'
-    options: '-X -Dsonar.projectKey=luis-rodriguezfernandez-sonarsource_maven-basic'
+    options: '-X'
 
 - task: SonarCloudPublish@3
   displayName: 'Code Analysis - Publish QG'
