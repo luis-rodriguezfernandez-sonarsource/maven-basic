@@ -9,6 +9,10 @@ pool:
 
 steps:
 
+- script: |
+    export SONAR_SCANNER_OPTS="-Xmx4096m"
+    displayName: 'Increase Scanner JVM Heap'
+    
 - task: SonarCloudPrepare@3
   inputs:
     SonarCloud: 'lurodrig.sonarcloud.io'
