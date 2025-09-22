@@ -9,8 +9,9 @@ pool:
 
 steps:
 
-- script: |
-    export SONAR_SCANNER_OPTS="-Xmx4096m"
+- task: AzureCLI@2
+  env:
+    SONAR_SCANNER_OPTS: -Xmx4096m
     
 - task: SonarCloudPrepare@3
   inputs:
