@@ -7,20 +7,11 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+variables:
+- name: SONAR_SCANNER_OPTS
+  value: -Xmx4096m
+  
 steps:
-
-
-
-# - task: AzureCLI@2
-#   env:
-#     ENV_VARIABLE_NAME: SONAR_SCANNER_OPTS
-
-# - task: Bash@3
-#   inputs:
-#     script: echo "This is " $ENV_VARIABLE_NAME
-#   env:
-#     SONAR_SCANNER_OPTS: -Xmx4096m
-#   displayName: 'echo environment variable'
     
 - task: SonarCloudPrepare@3
   inputs:
