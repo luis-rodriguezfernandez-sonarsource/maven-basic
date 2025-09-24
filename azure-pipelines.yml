@@ -14,6 +14,9 @@ variables:
   value: -Xmx4096m
   
 steps:
+
+- script: |    
+    echo "${{ convertToJson(parameters) }}"
     
 - task: SonarCloudPrepare@3
   inputs:
@@ -32,8 +35,8 @@ steps:
         sonar.scanner.skipJreProvisioning=true
 
 - script: |
-     echo "PRINT ENVIRONMENT" 
-     env
+    echo "PRINT ENVIRONMENT" 
+    env
 
 - task: Maven@4
   inputs:
