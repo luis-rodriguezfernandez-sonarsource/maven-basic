@@ -10,6 +10,8 @@ pool:
 variables:
 - name: SONAR_SCANNER_OPTS
   value: -Xmx4096m
+- name: SONAR_SCANNER_JAVA_OPTS
+  value: -Xmx4096m
   
 steps:
     
@@ -17,8 +19,6 @@ steps:
   inputs:
     SonarCloud: 'lurodrig.sonarcloud.io'
     organization: 'luis-rodriguezfernandez-sonarsource'
-#    projectName: 'maven-basic'
-#    projectKey: 'luis-rodriguezfernandez-sonarsource_maven-basic'
     scannerMode: 'cli'
     configMode: 'manual'
     cliProjectVersion: '4.0-SNAPSHOT'
