@@ -29,6 +29,7 @@ steps:
         sonar.verbose=true
         sonar.java.binaries=target/classes
         sonar.java.test.binaries=target/test-classes
+        sonar.scanner.skipJreProvisioning=true
 
 - script: |
      echo "PRINT ENVIRONMENT" 
