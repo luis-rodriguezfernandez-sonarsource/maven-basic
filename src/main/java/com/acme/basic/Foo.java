@@ -1,5 +1,8 @@
 package com.acme.basic;
 
+import java.util.concurrent.atomic.AtomicLong;
+
+
 public class Foo {
 
     public void fooMethod() {
@@ -13,7 +16,7 @@ public class Foo {
         System.out.println("Bar");
     }
 
-    public void Boolean isSameNumberValue(AtomicLong a, AtomicLong b) {
+    public Boolean isSameNumberValue(AtomicLong a, AtomicLong b) {
         return a.equals(b); // Noncompliant, this is true only if a == b
     }
 
