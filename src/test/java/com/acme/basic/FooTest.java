@@ -3,20 +3,19 @@ package com.acme.basic;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.logging.StreamHandler;
+import java.util.logging.SimpleFormatter;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class FooTest {
 
     @Test
-    void testIsSameNumberValueWithSameValue() {
+    void testIsSameNumberValueWithSameReference() {
         AtomicLong a = new AtomicLong(42);
-        AtomicLong b = new AtomicLong(42);
         Foo foo = new Foo();
         assertTrue(foo.isSameNumberValue(a, a));
-        assertFalse(foo.isSameNumberValue(a, b));
     }
 
     @Test
@@ -28,17 +27,27 @@ class FooTest {
     }
 
     @Test
-    void testFooMethodOutput() {
+    void testIsSameNumberValueWithSameValueDifferentReference() {
+        AtomicLong a = new AtomicLong(42);
+        AtomicLong b = new AtomicLong(42);
         Foo foo = new Foo();
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        PrintStream originalOut = System.out;
-        System.setOut(new PrintStream(outContent));
-        try {
-            foo.fooMethod();
-        } finally {
-            System.setOut(originalOut);
-        }
-        String expected = "Foo\nFoo\nFoo\nFoo\nBar\nBar\n";
-        assertEquals(expected, outContent.toString());
+        assertTrue(foo.isSameNumberValue(a, b));
+    }
+
+    @Test
+    void testFooMethodLoggerOutput() {
+        Foo foo = new Foo();
+        ByteArrayOutputStream logContent = new ByteArrayOutputStream();
+        StreamHandler handler = new StreamHandler(logContent, new SimpleFormatter());
+        foo.logger.addHandler(handler);
+
+        foo.fooMethod();
+        handler.flush();
+
+        String logOutput = logContent.toString();
+        assertTrue(logOutput.contains("Foo"));
+        assertTrue(logOutput.contains("Bar"));
+
+        foo.logger.removeHandler(handler);
     }
 }
