@@ -8,5 +8,9 @@ public class Foo {
 
 	System.out.println("Foo");
         System.out.println("Foo");
+
+	System.out.println("Bar");
+        System.out.println("Bar");
+
     }
 }
