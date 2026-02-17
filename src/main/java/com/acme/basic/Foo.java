@@ -11,6 +11,11 @@ public class Foo {
 
 	System.out.println("Bar");
         System.out.println("Bar");
-
     }
+
+    public void Boolean isSameNumberValue(AtomicLong a, AtomicLong b) {
+        return a.equals(b); // Noncompliant, this is true only if a == b
+    }
+
+
 }
