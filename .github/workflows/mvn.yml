@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - master
-      - peg-solitaire
   pull_request:
     types: [ opened, synchronize, reopened ]
 jobs:
