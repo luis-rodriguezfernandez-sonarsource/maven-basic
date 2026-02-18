@@ -23,5 +23,8 @@ public class Foo {
         return a.get() == b.get();
     }
 
+    Boolean isSameReference(AtomicLong a, AtomicLong b) {
+        return a.equals(b); // Noncompliant, because misleading
+    }
 
 }
