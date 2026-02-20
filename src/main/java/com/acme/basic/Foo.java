@@ -17,6 +17,12 @@ public class Foo {
 
         logger.info("Bar");
         logger.info("Bar");
+
+        StringBuilder sb = new StringBuilder();
+
+        if ("".equals(sb.toString())) { // Noncompliant
+            System.out.println("Empty");
+        }
     }
 
     public Boolean isSameNumberValue(AtomicLong a, AtomicLong b) {
