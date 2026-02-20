@@ -17,12 +17,6 @@ public class Foo {
 
         logger.info("Bar");
         logger.info("Bar");
-
-        StringBuilder sb = new StringBuilder();
-
-        if (sb.isEmpty()) { // Noncompliant
-            logger.info("Empty");
-        }
     }
 
     public Boolean isSameNumberValue(AtomicLong a, AtomicLong b) {
@@ -30,7 +24,7 @@ public class Foo {
     }
 
     Boolean isSameReference(AtomicLong a, AtomicLong b) {
-        return a.equals(b); // Noncompliant, because misleading
+        return a.get() == b.get(); // Noncompliant, because misleading
     }
 
 }
