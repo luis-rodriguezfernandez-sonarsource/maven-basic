@@ -20,8 +20,8 @@ public class Foo {
 
         StringBuilder sb = new StringBuilder();
 
-        if ("".equals(sb.toString())) { // Noncompliant
-            System.out.println("Empty");
+        if (sb.isEmpty()) { // Noncompliant
+            logger.info("Empty");
         }
     }
 
