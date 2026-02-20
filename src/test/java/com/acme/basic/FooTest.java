@@ -50,4 +50,21 @@ class FooTest {
 
         foo.logger.removeHandler(handler);
     }
+
+    @Test
+    void testIsSameReference() {
+        AtomicLong a = new AtomicLong(42);
+        AtomicLong b = new AtomicLong(42);
+        Foo foo = new Foo();
+
+        // Same reference
+        assertTrue(foo.isSameReference(a, a));
+
+        // Different references, same value
+        assertTrue(foo.isSameReference(a, b));
+
+        // Different references, different values
+        AtomicLong c = new AtomicLong(7);
+        assertFalse(foo.isSameReference(a, c));
+    }
 }
