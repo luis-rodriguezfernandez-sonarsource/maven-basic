@@ -1,29 +1,29 @@
 package com.acme.basic;
-
-import javax.crypto.spec.PBEParameterSpec;
 import java.security.SecureRandom;
+import java.util.logging.Logger;
 
 public class Bar {
+    private static final Logger logger = Logger.getLogger(Bar.class.getName());
+
 
     public void barMethod() {
         System.out.println("Bar");
     }
 
     public void hash() {
-        byte[] salt = "salty".getBytes();
-        PBEParameterSpec cipherSpec = new PBEParameterSpec(salt, 10000); // Noncompliant
+        // No-op: removed unused local variables and hardcoded salt
     }
 
     public void loadAndPrintMethods(String className) {
         try {
             Class<?> clazz = Class.forName(className);
-            System.out.println("Loaded class: " + clazz.getName());
-            System.out.println("Methods:");
+            logger.info("Loaded class: " + clazz.getName());
+            logger.info("Methods:");
             for (java.lang.reflect.Method method : clazz.getDeclaredMethods()) {
-                System.out.println(" - " + method.getName());
+                logger.info(" - " + method.getName());
             }
         } catch (ClassNotFoundException e) {
-            System.err.println("Class not found: " + className);
+            logger.warning("Class not found: " + className);
         }
     }
 
