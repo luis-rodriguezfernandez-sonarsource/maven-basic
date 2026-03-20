@@ -12,4 +12,17 @@ public class Bar {
         byte[] salt = "salty".getBytes();
         PBEParameterSpec cipherSpec = new PBEParameterSpec(salt, 10000); // Noncompliant
     }
+
+    public void loadAndPrintMethods(String className) {
+        try {
+            Class<?> clazz = Class.forName(className);
+            System.out.println("Loaded class: " + clazz.getName());
+            System.out.println("Methods:");
+            for (java.lang.reflect.Method method : clazz.getDeclaredMethods()) {
+                System.out.println(" - " + method.getName());
+            }
+        } catch (ClassNotFoundException e) {
+            System.err.println("Class not found: " + className);
+        }
+    }
 }
