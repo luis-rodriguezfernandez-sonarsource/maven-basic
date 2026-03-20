@@ -3,6 +3,7 @@ import java.security.SecureRandom;
 import java.util.logging.Logger;
 
 public class Bar {
+    private static final SecureRandom sr = new SecureRandom();
     private static final Logger logger = Logger.getLogger(Bar.class.getName());
 
 
@@ -28,8 +29,6 @@ public class Bar {
     }
 
     public int generator() {
-        SecureRandom sr = new SecureRandom();
-        sr.setSeed(123456L); // Noncompliant
         return sr.nextInt(32);
     }
 }
