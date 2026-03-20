@@ -1,6 +1,7 @@
 package com.acme.basic;
 
 import javax.crypto.spec.PBEParameterSpec;
+import java.security.SecureRandom;
 
 public class Bar {
 
@@ -24,5 +25,11 @@ public class Bar {
         } catch (ClassNotFoundException e) {
             System.err.println("Class not found: " + className);
         }
+    }
+
+    public int generator() {
+        SecureRandom sr = new SecureRandom();
+        sr.setSeed(123456L); // Noncompliant
+        return sr.nextInt(32);
     }
 }
