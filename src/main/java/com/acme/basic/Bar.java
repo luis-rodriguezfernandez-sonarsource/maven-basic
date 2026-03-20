@@ -1,8 +1,6 @@
 package com.acme.basic;
 import java.util.logging.Logger;
 
-import javax.crypto.spec.PBEParameterSpec;
-
 public class Bar {
     private static final Logger logger = Logger.getLogger(Bar.class.getName());
 
@@ -12,8 +10,7 @@ public class Bar {
     }
 
     public void hash() {
-        byte[] salt = "salty".getBytes();
-        PBEParameterSpec cipherSpec = new PBEParameterSpec(salt, 10000); // Noncompliant
+        // No-op: removed unused local variables and hardcoded salt
     }
 
     public void loadAndPrintMethods(String className) {
