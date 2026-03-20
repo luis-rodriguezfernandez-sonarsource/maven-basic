@@ -22,7 +22,7 @@ public class Bar {
                 logger.info(" - " + method.getName());
             }
         } catch (ClassNotFoundException e) {
-            System.err.println("Class not found: " + className);
+            logger.warning("Class not found: " + className);
         }
     }
 }
