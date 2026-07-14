@@ -7,7 +7,9 @@ public class HelloWorld {
             System.out.println("go to sleep...");
             Thread.sleep(1000);
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+             /* Clean up whatever needs to be handled before interrupting  */
+	     System.out.println("I was resting my eyes!");	
+             Thread.currentThread().interrupt();	
         }
         System.out.println("Hello World!");
     }
