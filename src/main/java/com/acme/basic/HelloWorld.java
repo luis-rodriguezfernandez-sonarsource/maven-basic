@@ -9,7 +9,6 @@ public class HelloWorld {
         } catch (InterruptedException e) {
              /* Clean up whatever needs to be handled before interrupting  */
              Thread.currentThread().interrupt();	
-             // throw new RuntimeException(e);
         }
         System.out.println("Hello World!");
     }
